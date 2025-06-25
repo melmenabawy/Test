@@ -722,125 +722,6 @@
             }
         }
         
-        /* Gallery Styles */
-        .gallery-section {
-            padding: 30px 0 10px;
-        }
-        
-        .gallery-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-            text-align: center;
-        }
-        
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            aspect-ratio: 1/1;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            overflow: auto;
-        }
-        
-        .modal-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            padding: 20px;
-        }
-        
-        .modal-img {
-            max-width: 90%;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-        
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .caption {
-            color: white;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-        
-        /* Navigation arrows */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 30px;
-            transition: 0.3s;
-            user-select: none;
-        }
-        
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        
-        .prev {
-            left: 0;
-            border-radius: 0 3px 3px 0;
-        }
-        
-        .prev:hover, .next:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        
         /* Service Image Fix */
         .service-img img {
             width: 100%;
@@ -925,7 +806,7 @@
         </div>
     </section>
 
-    <!-- Services Section with Galleries -->
+    <!-- Services Section -->
     <section class="section services" id="services">
         <div class="container">
             <div class="section-title">
@@ -942,24 +823,8 @@
                         <h3 data-en="Custom Uniforms" data-ar="الزي الرسمي الموحد">Custom Uniforms</h3>
                         <p data-en="We supply official uniforms with printing and embroidery, alongside workwear and promotional gifts across diverse sectors including medical and healthcare, hospitality, industrial, education, service, printing, and many other fields." data-ar="نوفر الزي الرسمي الرسمي مع الطباعة والتطريز، بالإضافة إلى ملابس العمل والهدايا الترويجية في العديد من القطاعات المتنوعة مثل الطبية والصحية، الضيافة، الصناعة، التعليم، الخدمات، الطباعة، والعديد من المجالات الأخرى.">We supply official uniforms with printing and embroidery, alongside workwear and promotional gifts across diverse sectors including medical and healthcare, hospitality, industrial, education, service, printing, and many other fields.</p>
                         
-                        <!-- Uniforms Gallery -->
-                        <div class="gallery-section">
-                            <h4 class="gallery-title" data-en="Uniforms Gallery" data-ar="معرض الأزياء">Uniforms Gallery</h4>
-                            <div id="uniformsGallery" class="gallery-container">
-                                <div class="gallery-item" onclick="openGallery('uniformsGallery', 0)">
-                                    <img src="images/uniforms/uniform1.jpg" alt="Medical Uniform">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('uniformsGallery', 1)">
-                                    <img src="images/uniforms/uniform2.jpg" alt="Hospitality Uniform">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('uniformsGallery', 2)">
-                                    <img src="images/uniforms/uniform3.jpg" alt="Corporate Uniform">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('uniformsGallery', 3)">
-                                    <img src="images/uniforms/uniform4.jpg" alt="Industrial Uniform">
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Link to Uniforms Gallery Page -->
+                        <a href="uniforms-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
                     </div>
                 </div>
 
@@ -972,24 +837,8 @@
                         <h3 data-en="Bed Linens & Supplies" data-ar="مفروشات متميزة">Premium furnishings</h3>
                         <p data-en="High-quality premium furnishings and supplies for hotels, hospitals, and healthcare facilities. We offer durable, comfortable, and hygienic solutions customized to meet your specific requirements." data-ar="مفروشات متميزة وامدادات عالية الجودة للفنادق والمستشفيات والمرافق الصحية. نقدم حلولاً متينة ومريحة وصحية مصممة خصيصًا لتلبية احتياجاتكم.">High-quality Premium furnishings and supplies for hotels, hospitals, and healthcare facilities. We offer durable, comfortable, and hygienic solutions customized to meet your specific requirements.</p>
                         
-                        <!-- Linens Gallery -->
-                        <div class="gallery-section">
-                            <h4 class="gallery-title" data-en="Linens Gallery" data-ar="معرض المفروشات">Linens Gallery</h4>
-                            <div id="linensGallery" class="gallery-container">
-                                <div class="gallery-item" onclick="openGallery('linensGallery', 0)">
-                                    <img src="images/linens/linen1.jpg" alt="Hotel Bed Linens">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('linensGallery', 1)">
-                                    <img src="images/linens/linen2.jpg" alt="Hospital Bed Sheets">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('linensGallery', 2)">
-                                    <img src="images/linens/linen3.jpg" alt="Premium Pillows">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('linensGallery', 3)">
-                                    <img src="images/linens/linen4.jpg" alt="Luxury Blankets">
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Link to Linens Gallery Page -->
+                        <a href="linens-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
                     </div>
                 </div>
 
@@ -1002,24 +851,8 @@
                         <h3 data-en="Business Accessories" data-ar="الاكسسوارات التجارية">Business Accessories</h3>
                         <p data-en="Professional business cards and promotional gifts designed to complement your corporate identity and enhance your brand presence in the marketplace." data-ar="بطاقات عمل احترافية وهدايا ترويجية مصممة لتكملة هويتك المؤسسية وتعزيز حضور علامتك التجارية في السوق.">Professional business cards and promotional gifts designed to complement your corporate identity and enhance your brand presence in the marketplace.</p>
                         
-                        <!-- Accessories Gallery -->
-                        <div class="gallery-section">
-                            <h4 class="gallery-title" data-en="Accessories Gallery" data-ar="معرض الإكسسوارات">Accessories Gallery</h4>
-                            <div id="accessoriesGallery" class="gallery-container">
-                                <div class="gallery-item" onclick="openGallery('accessoriesGallery', 0)">
-                                    <img src="images/accessories/accessory1.jpg" alt="Business Cards">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('accessoriesGallery', 1)">
-                                    <img src="images/accessories/accessory2.jpg" alt="Promotional Gifts">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('accessoriesGallery', 2)">
-                                    <img src="images/accessories/accessory3.jpg" alt="Corporate Gifts">
-                                </div>
-                                <div class="gallery-item" onclick="openGallery('accessoriesGallery', 3)">
-                                    <img src="images/accessories/accessory4.jpg" alt="Branded Merchandise">
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Link to Accessories Gallery Page -->
+                        <a href="accessories-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
                     </div>
                 </div>
             </div>
@@ -1378,6 +1211,7 @@
         // Gallery Modal Functionality
         let currentGallery = '';
         let currentIndex = 0;
+        let currentImages = [];
 
         function openGallery(galleryId, index) {
             currentGallery = galleryId;
@@ -1386,9 +1220,8 @@
             const modalImg = document.getElementById('modalImage');
             const caption = document.getElementById('caption');
             
-            const galleryItems = document.querySelectorAll(`#${galleryId} .gallery-item img`);
-            modalImg.src = galleryItems[index].src;
-            caption.textContent = galleryItems[index].alt;
+            modalImg.src = currentImages[index].src;
+            caption.textContent = currentImages[index].alt;
             
             modal.style.display = "block";
             document.body.style.overflow = "hidden";
@@ -1403,13 +1236,13 @@
             const galleryItems = document.querySelectorAll(`#${currentGallery} .gallery-item img`);
             currentIndex += n;
             
-            if (currentIndex >= galleryItems.length) { currentIndex = 0; }
-            if (currentIndex < 0) { currentIndex = galleryItems.length - 1; }
+            if (currentIndex >= currentImages.length) { currentIndex = 0; }
+            if (currentIndex < 0) { currentIndex = currentImages.length - 1; }
             
             const modalImg = document.getElementById('modalImage');
             const caption = document.getElementById('caption');
-            modalImg.src = galleryItems[currentIndex].src;
-            caption.textContent = galleryItems[currentIndex].alt;
+            modalImg.src = currentImages[currentIndex].src;
+            caption.textContent = currentImages[currentIndex].alt;
         }
 
         // Close modal when clicking outside image
@@ -1424,6 +1257,12 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 closeModal();
+            }
+            if (event.key === "ArrowLeft") {
+                changeImage(-1);
+            }
+            if (event.key === "ArrowRight") {
+                changeImage(1);
             }
         });
 
