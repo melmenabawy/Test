@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linens Gallery - Shams Inc.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same CSS as uniforms-gallery.html */
+    </style>
+</head>
+<body>
+    <!-- Header (same as uniforms-gallery.html) -->
+    <header>
+        <!-- Same header content -->
+    </header>
+
+    <!-- Gallery Content -->
+    <section class="gallery-page">
+        <div class="container">
+            <a href="index.html#services" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span data-en="Back to Services" data-ar="العودة إلى الخدمات">Back to Services</span>
+            </a>
+            
+            <div class="gallery-header">
+                <h1 data-en="Linens Gallery" data-ar="معرض المفروشات">Linens Gallery</h1>
+                <p data-en="Browse our collection of premium bed linens and furnishings" data-ar="تصفح مجموعتنا من المفروشات وملاءات الأسرة المتميزة">Browse our collection of premium bed linens and furnishings</p>
+            </div>
+            
+            <div id="linensGallery" class="gallery-container">
+                <!-- Images will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal (same as main page) -->
+    <div id="imageModal" class="modal">
+        <!-- Same modal content -->
+    </div>
+
+    <!-- Footer (same as main page) -->
+    <footer>
+        <!-- Same footer content -->
+    </footer>
+
+    <script>
+        // This would be replaced with actual server-side code in production
+        const linenImages = [
+            {src: 'images/linens/linen1.jpg', alt: 'Hotel Bed Linens'},
+            {src: 'images/linens/linen2.jpg', alt: 'Hospital Bed Sheets'},
+            {src: 'images/linens/linen3.jpg', alt: 'Premium Pillows'},
+            {src: 'images/linens/linen4.jpg', alt: 'Luxury Blankets'},
+            // Add more images as needed
+        ];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryContainer = document.getElementById('linensGallery');
+            
+            // Sort images alphabetically by filename
+            linenImages.sort((a, b) => a.src.localeCompare(b.src));
+            
+            // Store images for modal navigation
+            currentImages = linenImages;
+            
+            // Generate gallery items
+            linenImages.forEach((image, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.onclick = () => openGallery('linensGallery', index);
+                
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.alt;
+                
+                galleryItem.appendChild(img);
+                galleryContainer.appendChild(galleryItem);
+            });
+            
+            // Rest of the JavaScript same as uniforms-gallery.html
+        });
+        
+        // Rest of the JavaScript same as uniforms-gallery.html
+    </script>
+</body>
+</html>
