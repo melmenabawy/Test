@@ -761,6 +761,34 @@
         a:hover {
             text-decoration: underline;
         }
+
+        /* Service Card Button Alignment */
+.service-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-content p {
+    flex-grow: 1; /* Makes the paragraph take available space */
+    margin-bottom: 20px; /* Adds space between text and button */
+}
+
+.service-content .btn {
+    align-self: center; /* Centers the button horizontally */
+    margin-top: auto; /* Pushes button to bottom */
+    width: 80%; /* Consistent button width */
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .service-content .btn {
+        width: 100%; /* Full width on mobile */
+    }
+}
+        
+
+        
     </style>
 </head>
 <body>
