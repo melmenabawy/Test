@@ -3,14 +3,769 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furnishings & Supplies Gallery - Shams Inc.</title>
+    <title>Shams Inc. - Uniforms & Premium furnishings</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* (Keep all CSS styles from previous linen gallery) */
+        /* CSS from your original main page */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #003366;
+            --accent-color: #e67e22;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --text-color: #444;
+            --white: #fff;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .rtl {
+            direction: rtl;
+            font-family: 'Arial', 'Tahoma', sans-serif;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .rtl nav ul {
+            padding-right: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        .rtl nav ul li {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .rtl .language-toggle {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        
+        .language-toggle button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--dark-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .language-toggle button:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .language-toggle button.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 90px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .industry-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .industry-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .industry-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        /* Partners Section */
+        .partners {
+            background-color: var(--light-color);
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .partner-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .partner-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/Contact.jpeg') no-repeat center center/cover;
+            color: var(--white);
+            padding: 40px 0;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 40%;
+        }
+        
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .rtl .contact-info h3::after {
+            left: auto;
+            right: 0;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-details i {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            color: var(--accent-color);
+        }
+        
+        .rtl .contact-details i {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            max-width: 100%;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form .form-control {
+            width: 100%;
+            max-width: 800px;
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            margin: auto;
+            display: block;
+        }
+        
+        .contact-form h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+        
+            .contact-info,
+            .contact-form {
+                max-width: 100%;
+                width: 100%;
+            }
+        
+            .contact-form {
+                padding: 25px 20px;
+            }
+        
+            .form-group {
+                margin-bottom: 18px;
+            }
+        
+            .form-control {
+                padding: 14px 16px;
+                font-size: 1rem;
+            }
+        
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            select,
+            textarea {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        
+            .btn {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 1.1rem;
+            }
+        
+            .contact-info h3,
+            .contact-form h3 {
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-form {
+                padding: 20px 15px;
+            }
+            .form-control {
+                padding: 12px 14px;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .rtl .footer-links ul li a:hover {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .rtl .footer-contact i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo-container {
+                order: 1;
+                flex: 1;
+            }
+            
+            .mobile-menu-btn {
+                order: 2;
+                display: block;
+            }
+            
+            nav {
+                order: 3;
+                flex: 1 0 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            nav.active {
+                max-height: 500px;
+                padding: 20px 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .language-toggle {
+                margin-left: auto;
+                order: 2;
+            }
+            
+            .rtl .language-toggle {
+                margin-right: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+
+/* our services and get quatation icons alighment */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-outline {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+}
+        
+        
+        /* Service Image Fix */
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: fill;
+        }
+        
+        /* Link Styles */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <!-- Header (Same as main page) -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo-container">
@@ -23,12 +778,12 @@
             
             <nav id="mainNav">
                 <ul>
-                    <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
-                    <li><a href="index.html#about" class="nav-link" data-en="About Us" data-ar="من نحن">About Us</a></li>
-                    <li><a href="index.html#services" class="nav-link" data-en="Products & Services" data-ar="المنتجات والخدمات">Products & Services</a></li>
-                    <li><a href="index.html#industries" class="nav-link" data-en="Industries" data-ar="القطاعات">Industries</a></li>
-                    <li><a href="index.html#partners" class="nav-link" data-en="Partners" data-ar="شركاؤنا">Partners</a></li>
-                    <li><a href="index.html#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                    <li><a href="#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                    <li><a href="#services" class="nav-link" data-en="Products & Services" data-ar="المنتجات والخدمات">Products & Services</a></li>
+                    <li><a href="#industries" class="nav-link" data-en="Industries" data-ar="القطاعات">Industries</a></li>
+                    <li><a href="#partners" class="nav-link" data-en="Partners" data-ar="شركاؤنا">Partners</a></li>
+                    <li><a href="#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
                 </ul>
             </nav>
             
@@ -39,96 +794,222 @@
         </div>
     </header>
 
-    <!-- Gallery Content -->
-    <section class="gallery-page">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-en="Premium Uniforms & Bed Linens" data-ar="أزياء موحدة ومفروشات متميزة">Uniforms & Premium furnishings</h1>
+            <p data-en="Providing high-quality uniforms & premium furnishings for businesses across Saudi Arabia" data-ar="نوفر أزياء موحدة ومفروشات متميزة عالية الجودة للشركات في جميع أنحاء المملكة العربية السعودية">Providing high-quality uniforms & premium furnishings for businesses across Saudi Arabia</p>
+            <div class="btn-group">
+                <a href="#services" class="btn" data-en="Our Services" data-ar="خدماتنا">Our Services</a>
+                <a href="#contact" class="btn btn-outline" data-en="Get a Quote" data-ar="اطلب عرض سعر">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
         <div class="container">
-            <a href="index.html#services" class="back-button">
-                <i class="fas fa-arrow-left"></i>
-                <span data-en="Back to Services" data-ar="العودة إلى الخدمات">Back to Services</span>
-            </a>
-            
-            <div class="gallery-header">
-                <h1 data-en="Furnishings & Supplies" data-ar="المفروشات والتجهيزات">Furnishings & Supplies</h1>
-                <p data-en="Premium furnishings and operational supplies for businesses" data-ar="مفروشات متميزة وتجهيزات تشغيلية للشركات">Premium furnishings and operational supplies for businesses</p>
+            <div class="section-title">
+                <h2 data-en="About Us" data-ar="من نحن">About Us</h2>
             </div>
             
-            <div id="furnishingsGallery" class="gallery-container">
-                <!-- Category 1: Bedding -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/bedding1.jpg" alt="Hotel Bedding Sets">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-en="Our Vision" data-ar="رؤيتنا">Our Vision</h3>
+                    <p data-en="To be the leading symbol of excellence and dedication in official uniform services, supporting the Kingdom's ambitious transformation regionally and globally. We aim to empower and represent pioneering businesses across healthcare, industrial, hospitality, and education sectors, fully aligned with the aspirations of Vision 2030, driving innovation and sustainable growth." data-ar="أن نكون الرمز الرائد للتميز والالتزام في خدمات الزي الرسمي، داعمين التحول الطموح للمملكة على المستويين الإقليمي والعالمي. نسعى لتمكين وتمثيل الشركات الرائدة في قطاعات الصحة، الصناعة، الضيافة والتعليم، متماشين مع تطلعات رؤية 2030، ومحفزين للابتكار والنمو المستدام.">To be the leading symbol of excellence and dedication in official uniform services, supporting the Kingdom's ambitious transformation regionally and globally. We aim to empower and represent pioneering businesses across healthcare, industrial, hospitality, and education sectors, fully aligned with the aspirations of Vision 2030, driving innovation and sustainable growth.</p>
+                    
+                    <h3 data-en="Our Mission" data-ar="رسالتنا">Our Mission</h3>
+                    <p data-en="We are a dedicated team of professionals committed to designing uniforms that combine exceptional quality, durability, and aesthetic appeal. In addition to uniforms, we also provide premium furnishings including pillows, pillowcases, bed sheets, blankets, and more. We understand the vital role these products play in enhancing the professional image of your organization, strengthening your brand identity, and empowering you to compete effectively both locally and globally." data-ar="نحن فريق من المحترفين المتفانين نلتزم بتصميم زي رسمي يجمع بين الجودة الاستثنائية، المتانة، والمظهر الجمالي. بالإضافة إلى الأزياء الرسمية، نوفر أيضاً مفروشات متميزة تشمل الوسائد، أغطية الوسائد، ملاءات الأسرة، الأغطية، والمزيد. ندرك الدور الحيوي الذي تلعبه هذه المنتجات في تعزيز الصورة الاحترافية لمنشأتكم، وتقوية هوية علامتكم التجارية، وتمكينكم من المنافسة بفعالية محلياً وعالمياً.">We are a dedicated team of professionals committed to designing uniforms that combine exceptional quality, durability, and aesthetic appeal. In addition to uniforms, we also provide premium furnishings including pillows, pillowcases, bed sheets, blankets, and more. We understand the vital role these products play in enhancing the professional image of your organization, strengthening your brand identity, and empowering you to compete effectively both locally and globally.</p>
                 </div>
                 
-                <!-- Category 2: Towels -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/towels1.jpg" alt="Luxury Bath Towels">
-                </div>
-                
-                <!-- Category 3: Pillows -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/pillows1.jpg" alt="Premium Pillows">
-                </div>
-                
-                <!-- Category 4: Blankets -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/blankets1.jpg" alt="Thermal Blankets">
-                </div>
-                
-                <!-- Category 5: Curtains -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/curtains1.jpg" alt="Blackout Curtains">
-                </div>
-                
-                <!-- Category 6: Mattresses -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/mattress1.jpg" alt="Orthopedic Mattresses">
-                </div>
-                
-                <!-- Category 7: Table Linens -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/table1.jpg" alt="Banquet Tablecloths">
-                </div>
-                
-                <!-- Category 8: Cleaning Supplies -->
-                <div class="gallery-item">
-                    <img src="images/furnishings/cleaning1.jpg" alt="Commercial Cleaning Carts">
+                <div class="about-image">
+                    <img src="images/Missinon and vision.png" alt="About Shams Inc.">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Modal (Same as before) -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" class="modal-img">
-            <div id="caption" class="caption"></div>
-        </div>
-        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-        <a class="next" onclick="changeImage(1)">&#10095;</a>
-    </div>
-
-    <!-- Footer (Same as main page) -->
-    <footer>
+    <!-- Services Section -->
+    <section class="section services" id="services">
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <img src="images/SHAMSINC.webp" class="footer-logo">
-                    <p data-en="We are committed to providing high-quality uniforms and premium furnishings to businesses across Saudi Arabia..." data-ar="نحن ملتزمون بتوفير زي رسمي عالي الجودة ومفروشات متميزة للشركات في جميع أنحاء المملكة العربية السعودية...">
-                        <!-- (Keep full footer text from main page) -->
-                    </p>
-                    <div class="social-links">
-                        <!-- (Keep social links) -->
+            <div class="section-title">
+                <h2 data-en="Our Products & Services" data-ar="منتجاتنا وخدماتنا">Our Products & Services</h2>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 - Uniforms -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/Uniform.jpg" alt="Uniforms">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-en="Custom Uniforms" data-ar="الزي الرسمي الموحد">Custom Uniforms</h3>
+                        <p data-en="We supply official uniforms with printing and embroidery, alongside workwear and promotional gifts across diverse sectors including medical and healthcare, hospitality, industrial, education, service, printing, and many other fields." data-ar="نوفر الزي الرسمي الرسمي مع الطباعة والتطريز، بالإضافة إلى ملابس العمل والهدايا الترويجية في العديد من القطاعات المتنوعة مثل الطبية والصحية، الضيافة، الصناعة، التعليم، الخدمات، الطباعة، والعديد من المجالات الأخرى.">We supply official uniforms with printing and embroidery, alongside workwear and promotional gifts across diverse sectors including medical and healthcare, hospitality, industrial, education, service, printing, and many other fields.</p>
+                        
+                        <!-- Link to Uniforms Gallery Page -->
+                        <a href="uniforms-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
                     </div>
                 </div>
-                <!-- (Keep other footer sections) -->
-            </div>
-            <!-- (Keep copyright section) -->
-        </div>
-    </footer>
 
-    <script>
-        // (Keep all JavaScript from previous gallery)
-        // Only change gallery ID references from 'linensGallery' to 'furnishingsGallery'
-    </script>
-</body>
-</html>
+                <!-- Service 2 - Linens -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/Linen.jpg" alt="Bed Linens">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-en="Medical & Hospitality Textiles" data-ar="منسوجات طبية وفندقية">Medical & Hospitality Textiles</h3>
+                        <p data-en="High-quality medical-grade bedding and premium hotel textiles including sheets, blankets, curtains, and complete room solutions for healthcare and hospitality sectors." data-ar="ملاءات طبية عالية الجودة ومنسوجات فندقية فاخرة تشمل الشراشف، الأغطية، الستائر وحلول الغرف المتكاملة لقطاعي الرعاية الصحية والضيافة">High-quality medical-grade bedding and premium hotel textiles including sheets, blankets, curtains, and complete room solutions for healthcare and hospitality sectors.</p>
+                        
+                        <!-- Link to Linens Gallery Page -->
+                        <a href="medical-hospitality-textiles.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 - Accessories -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/Business accessories.jpg" alt="Business Accessories">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-en="Business Accessories" data-ar="الاكسسوارات التجارية">Business Accessories</h3>
+                        <p data-en="Professional business cards and promotional gifts designed to complement your corporate identity and enhance your brand presence in the marketplace." data-ar="بطاقات عمل احترافية وهدايا ترويجية مصممة لتكملة هويتك المؤسسية وتعزيز حضور علامتك التجارية في السوق.">Professional business cards and promotional gifts designed to complement your corporate identity and enhance your brand presence in the marketplace.</p>
+                        
+                        <!-- Link to Accessories Gallery Page -->
+                        <a href="accessories-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="section" id="industries">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Industries We Serve" data-ar="القطاعات التي نخدمها">Industries We Serve</h2>
+            </div>
+            
+            <div class="industries-grid">
+                <!-- Industry 1 -->
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3 data-en="Healthcare" data-ar="الرعاية الصحية">Healthcare</h3>
+                    <p data-en="Uniforms and medical textiles for hospitals, clinics, and medical centers" data-ar="أزياء وملاءات طبية للمستشفيات والعيادات والمراكز الطبية">Uniforms and medical textiles for hospitals, clinics, and medical centers</p>
+                </div>
+                
+                <!-- Industry 2 -->
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3 data-en="Hospitality" data-ar="الضيافة">Hospitality</h3>
+                    <p data-en="Uniforms and premium textiles for hotels, resorts, and restaurants" data-ar="أزياء وملاءات فاخرة للفنادق والمنتجعات والمطاعم">Uniforms and premium textiles for hotels, resorts, and restaurants</p>
+                </div>
+                
+                <!-- Industry 3 -->
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 data-en="Industrial" data-ar="الصناعي">Industrial</h3>
+                    <p data-en="Workwear and safety uniforms for industrial sectors" data-ar="ملابس العمل والزي الموحد للسلامة للقطاعات الصناعية">Workwear and safety uniforms for industrial sectors</p>
+                </div>
+                
+                <!-- Industry 4 -->
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3 data-en="Education" data-ar="التعليم">Education</h3>
+                    <p data-en="School uniforms and educational institution apparel" data-ar="الزي المدرسي وملابس المؤسسات التعليمية">School uniforms and educational institution apparel</p>
+                </div>
+                
+                <!-- Industry 5 -->
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 data-en="Corporate" data-ar="الشركات">Corporate</h3>
+                    <p data-en="Professional uniforms for corporate offices and businesses" data-ar="أزياء مهنية للمكاتب والشركات">Professional uniforms for corporate offices and businesses</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section partners" id="partners">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Our Partners" data-ar="شركاؤنا">Our Partners</h2>
+            </div>
+            
+            <div class="partners-grid">
+                <!-- Partner 1 -->
+                <div class="partner-logo">
+                    <img src="images/SGH.svg" alt="Saudi German Hospital">
+                </div>
+                
+                <!-- Partner 2 -->
+                <div class="partner-logo">
+                    <img src="images/UnitedPharmacy.webp" alt="United Pharmacy">
+                </div>
+                
+                <!-- Partner 3 -->
+                <div class="partner-logo">
+                    <img src="images/Johnson.png" alt="Johnson Company">
+                </div>
+                
+                <!-- Partner 4 -->
+                <div class="partner-logo">
+                    <img src="images/Virgin.svg" alt="Virgin MegaStore">
+                </div>
+                
+                <!-- Partner 5 -->
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Shams+Travel" alt="Shams Travel & Tourism">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h3 data-en="Get In Touch" data-ar="ابقى على تواصل">Get In Touch</h3>
+                <p data-en="We're here to assist you whether your industry is launching a new uniform line or switching suppliers within the same specialty." data-ar="نحن هنا لمساعدتك سواء كانت صناعتك تطلق خط زي جديد أو تغير الموردين في نفس التخصص.">We're here to assist you whether your industry is launching a new uniform line or switching suppliers within the same specialty.</p>
+                
+                <div class="contact-details">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Jeddah - Sari Street" data-ar="جدة - شارع صاري">Jeddah - Sari Street</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span><a href="mailto:info@shamsinc.com">info@shamsinc.com</a></span>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <span><a href="tel:+966569983395">+966 56 998 3395</a></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="quoteForm">
+                    <h3 data-en="Request a Quote" data-ar="طلب عرض سعر">Request a Quote</h3>
+                    
+                    <div class="form-group">
+                        <label for="company" data-en="Company Name" data-ar="اسم الشركة">Company Name</label>
+                        <input id="company" class="form-control" name="company" required type="text">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name" data-en="Contact Person" data-ar="اسم المسؤول">Contact Person</label>
+                        <input id="name" class="form-control" name="name" required type="text">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" data-en="Email" data-ar="الب
