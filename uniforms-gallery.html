@@ -3,20 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uniforms Gallery - Shams Inc.</title>
+    <title>Custom Uniforms Gallery - Shams Inc.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Copy all the CSS from the main page */
-        /* Add the gallery-specific styles from the main page */
+        /* (Same CSS as Medical & Hospitality Textiles gallery) */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #003366;
+            --accent-color: #e67e22;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --text-color: #444;
+            --white: #fff;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .rtl {
+            direction: rtl;
+            font-family: 'Arial', 'Tahoma', sans-serif;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .rtl nav ul {
+            padding-right: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        .rtl nav ul li {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .rtl .language-toggle {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        
+        .language-toggle button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--dark-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .language-toggle button:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .language-toggle button.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
         
         /* Gallery Page Styles */
         .gallery-page {
-            padding: 80px 0;
+            padding: 120px 0 60px;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+            transition: var(--transition);
+        }
+        
+        .rtl .back-button i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        .back-button:hover {
+            color: var(--secondary-color);
+        }
+        
+        .back-button:hover i {
+            transform: translateX(-5px);
+        }
+        
+        .rtl .back-button:hover i {
+            transform: translateX(5px);
         }
         
         .gallery-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .gallery-header h1 {
@@ -34,19 +192,22 @@
         
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
         
         .gallery-item {
-            position: relative;
-            overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            aspect-ratio: 1/1;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
             cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
         
         .gallery-item img {
@@ -56,46 +217,310 @@
             transition: var(--transition);
         }
         
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
         .gallery-item:hover img {
             transform: scale(1.05);
         }
         
-        /* Back button */
-        .back-button {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-            font-weight: 600;
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .caption {
+            margin-top: 15px;
+            color: var(--white);
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .rtl .close {
+            right: auto;
+            left: 30px;
+        }
+        
+        .close:hover {
+            color: var(--accent-color);
+        }
+        
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 20px;
+            transition: var(--transition);
+            user-select: none;
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .rtl .next {
+            right: auto;
+            left: 0;
+        }
+        
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .rtl .prev {
+            left: auto;
+            right: 0;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: var(--accent-color);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .rtl .footer-links h3::after, .rtl .footer-contact h3::after {
+            left: auto;
+            right: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
         }
         
-        .back-button:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
+        .footer-links ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
         }
         
-        .back-button i {
-            margin-right: 8px;
+        .rtl .footer-links ul li a:hover {
+            padding-left: 0;
+            padding-right: 5px;
         }
         
-        .rtl .back-button i {
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .rtl .footer-contact i {
             margin-right: 0;
-            margin-left: 8px;
+            margin-left: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo-container {
+                order: 1;
+                flex: 1;
+            }
+            
+            .mobile-menu-btn {
+                order: 2;
+                display: block;
+            }
+            
+            nav {
+                order: 3;
+                flex: 1 0 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            nav.active {
+                max-height: 500px;
+                padding: 20px 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .language-toggle {
+                margin-left: auto;
+                order: 2;
+            }
+            
+            .rtl .language-toggle {
+                margin-right: auto;
+            }
+            
+            .gallery-page {
+                padding: 100px 0 40px;
+            }
+            
+            .gallery-header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .gallery-item {
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-header p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header (same as main page) -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo-container">
-                <img src="images\SHAMSINC.webp" alt="Shams Inc. Logo" class="logo">
+                <img src="images/SHAMSINC.webp" alt="Shams Inc. Logo" class="logo">
             </div>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -104,7 +529,7 @@
             
             <nav id="mainNav">
                 <ul>
-                    <li><a href="index.html#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
                     <li><a href="index.html#about" class="nav-link" data-en="About Us" data-ar="من نحن">About Us</a></li>
                     <li><a href="index.html#services" class="nav-link" data-en="Products & Services" data-ar="المنتجات والخدمات">Products & Services</a></li>
                     <li><a href="index.html#industries" class="nav-link" data-en="Industries" data-ar="القطاعات">Industries</a></li>
@@ -129,17 +554,66 @@
             </a>
             
             <div class="gallery-header">
-                <h1 data-en="Uniforms Gallery" data-ar="معرض الأزياء">Uniforms Gallery</h1>
-                <p data-en="Browse our collection of high-quality custom uniforms" data-ar="تصفح مجموعتنا من الأزياء الموحدة عالية الجودة">Browse our collection of high-quality custom uniforms</p>
+                <h1 data-en="Custom Uniforms Gallery" data-ar="معرض الزي الموحد">Custom Uniforms Gallery</h1>
+                <p data-en="Professional uniforms for healthcare, hospitality, corporate and industrial sectors" data-ar="أزياء مهنية لقطاعات الرعاية الصحية، الضيافة، الشركات والصناعات">Professional uniforms for healthcare, hospitality, corporate and industrial sectors</p>
             </div>
             
             <div id="uniformsGallery" class="gallery-container">
-                <!-- Images will be loaded dynamically -->
+                <!-- Healthcare Uniforms -->
+                <div class="gallery-item">
+                    <img src="images/uniforms/medical1.jpg" alt="Medical Scrubs">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/medical2.jpg" alt="Doctor Coats">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/medical3.jpg" alt="Nurse Uniforms">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/medical4.jpg" alt="Hospital Staff Uniforms">
+                </div>
+                
+                <!-- Hospitality Uniforms -->
+                <div class="gallery-item">
+                    <img src="images/uniforms/hotel1.jpg" alt="Hotel Staff Uniforms">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/hotel2.jpg" alt="Restaurant Staff Uniforms">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/hotel3.jpg" alt="Chef Uniforms">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/hotel4.jpg" alt="Receptionist Uniforms">
+                </div>
+                
+                <!-- Corporate Uniforms -->
+                <div class="gallery-item">
+                    <img src="images/uniforms/corporate1.jpg" alt="Corporate Office Uniforms">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/corporate2.jpg" alt="Security Uniforms">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/corporate3.jpg" alt="Executive Uniforms">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/uniforms/corporate4.jpg" alt="Professional Attire">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Modal (same as main page) -->
+    <!-- Image Modal -->
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
@@ -150,13 +624,13 @@
         <a class="next" onclick="changeImage(1)">&#10095;</a>
     </div>
 
-    <!-- Footer (same as main page) -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <img src="images\SHAMSINC.webp" class="footer-logo">
-                    <p data-en="We are committed to providing high-quality uniforms..." data-ar="نحن ملتزمون بتوفير زي رسمي عالي الجودة...">We are committed to providing high-quality uniforms...</p>
+                    <img src="images/SHAMSINC.webp" class="footer-logo">
+                    <p data-en="We are committed to providing high-quality custom uniforms to businesses across Saudi Arabia. Guided by our dedication to excellence, professionalism, and customer satisfaction, we support the Kingdom's vision for regional and global growth. Through our products and services, we empower organizations to strengthen their brand identity and compete effectively in diverse sectors." data-ar="نحن ملتزمون بتوفير زي موحد عالي الجودة للشركات في جميع أنحاء المملكة العربية السعودية. مسترشدين بتفانينا في التميز والاحترافية ورضا العملاء، ندعم رؤية المملكة للنمو الإقليمي والعالمي. من خلال منتجاتنا وخدماتنا، نمكّن المؤسسات من تعزيز هويتها التجارية والمنافسة بفعالية في مختلف القطاعات.">We are committed to providing high-quality custom uniforms to businesses across Saudi Arabia. Guided by our dedication to excellence, professionalism, and customer satisfaction, we support the Kingdom's vision for regional and global growth. Through our products and services, we empower organizations to strengthen their brand identity and compete effectively in diverse sectors.</p>
                     
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -169,7 +643,7 @@
                 <div class="footer-links">
                     <h3 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
                         <li><a href="index.html#about" data-en="About Us" data-ar="من نحن">About Us</a></li>
                         <li><a href="index.html#services" data-en="Services" data-ar="الخدمات">Services</a></li>
                         <li><a href="index.html#industries" data-en="Industries" data-ar="القطاعات">Industries</a></li>
@@ -194,84 +668,71 @@
     </footer>
 
     <script>
-        // Copy all the JavaScript from the main page
-        // Add the gallery loading functionality
+        // Language Toggle Functionality
+        const enBtn = document.getElementById('enBtn');
+        const arBtn = document.getElementById('arBtn');
+        const body = document.body;
         
-        // This would be replaced with actual server-side code in production
-        const uniformImages = [
-            {src: 'images/uniforms/uniform1.jpg', alt: 'Medical Uniform'},
-            {src: 'images/uniforms/uniform2.jpg', alt: 'Hospitality Uniform'},
-            {src: 'images/uniforms/uniform3.jpg', alt: 'Corporate Uniform'},
-            {src: 'images/uniforms/uniform4.jpg', alt: 'Industrial Uniform'},
-            // Add more images as needed
-        ];
+        enBtn.addEventListener('click', () => {
+            body.classList.remove('rtl');
+            enBtn.classList.add('active');
+            arBtn.classList.remove('active');
+            updateTextContent('en');
+        });
         
-        document.addEventListener('DOMContentLoaded', function() {
-            const galleryContainer = document.getElementById('uniformsGallery');
-            
-            // Sort images alphabetically by filename
-            uniformImages.sort((a, b) => a.src.localeCompare(b.src));
-            
-            // Store images for modal navigation
-            currentImages = uniformImages;
-            
-            // Generate gallery items
-            uniformImages.forEach((image, index) => {
-                const galleryItem = document.createElement('div');
-                galleryItem.className = 'gallery-item';
-                galleryItem.onclick = () => openGallery('uniformsGallery', index);
-                
-                const img = document.createElement('img');
-                img.src = image.src;
-                img.alt = image.alt;
-                
-                galleryItem.appendChild(img);
-                galleryContainer.appendChild(galleryItem);
-            });
-            
-            // Initialize language toggle
-            const enBtn = document.getElementById('enBtn');
-            const arBtn = document.getElementById('arBtn');
-            const body = document.body;
-            
-            enBtn.addEventListener('click', () => {
-                body.classList.remove('rtl');
-                enBtn.classList.add('active');
-                arBtn.classList.remove('active');
-                updateTextContent('en');
-            });
-            
-            arBtn.addEventListener('click', () => {
-                body.classList.add('rtl');
-                arBtn.classList.add('active');
-                enBtn.classList.remove('active');
-                updateTextContent('ar');
-            });
-            
-            function updateTextContent(lang) {
-                document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
-                    if (lang === 'en' && element.hasAttribute('data-en')) {
-                        element.textContent = element.getAttribute('data-en');
-                    } else if (lang === 'ar' && element.hasAttribute('data-ar')) {
-                        element.textContent = element.getAttribute('data-ar');
-                    }
-                });
-            }
-            
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            mobileMenuBtn.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (mainNav.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+        arBtn.addEventListener('click', () => {
+            body.classList.add('rtl');
+            arBtn.classList.add('active');
+            enBtn.classList.remove('active');
+            updateTextContent('ar');
+        });
+        
+        function updateTextContent(lang) {
+            document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
+                if (lang === 'en' && element.hasAttribute('data-en')) {
+                    element.textContent = element.getAttribute('data-en');
+                } else if (lang === 'ar' && element.hasAttribute('data-ar')) {
+                    element.textContent = element.getAttribute('data-ar');
                 }
+            });
+        }
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Gallery Functionality
+        let currentGallery = '';
+        let currentIndex = 0;
+        let currentImages = [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('#uniformsGallery .gallery-item');
+            currentImages = Array.from(galleryItems).map(item => {
+                const img = item.querySelector('img');
+                return {
+                    src: img.src,
+                    alt: img.alt
+                };
+            });
+            
+            // Add click event to each gallery item
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    openGallery('uniformsGallery', index);
+                });
             });
             
             // Set current year in footer
@@ -279,11 +740,6 @@
             document.getElementById('year-en').textContent = currentYear;
             document.getElementById('year-ar').textContent = currentYear;
         });
-        
-        // Gallery Modal Functionality (same as main page)
-        let currentGallery = '';
-        let currentIndex = 0;
-        let currentImages = [];
 
         function openGallery(galleryId, index) {
             currentGallery = galleryId;
@@ -324,7 +780,7 @@
             }
         }
 
-        // Close with ESC key and arrow navigation
+        // Close with ESC key
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 closeModal();
