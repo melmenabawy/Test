@@ -762,28 +762,38 @@
             text-decoration: underline;
         }
 
-        /* Service Card Button Alignment */
+      /* Service Card Improvements */
+.service-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Makes all cards equal height */
+}
+
 .service-content {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex-grow: 1; /* Takes remaining space */
+    padding: 20px;
 }
 
 .service-content p {
-    flex-grow: 1; /* Makes the paragraph take available space */
-    margin-bottom: 20px; /* Adds space between text and button */
+    flex-grow: 1; /* Pushes button to bottom */
+    margin-bottom: 15px; /* Space between text and button */
 }
 
 .service-content .btn {
-    align-self: center; /* Centers the button horizontally */
-    margin-top: auto; /* Pushes button to bottom */
+    align-self: center; /* Center horizontally */
     width: 80%; /* Consistent button width */
+    max-width: 200px; /* Maximum button width */
+    margin-top: auto; /* Pushes to bottom */
     text-align: center;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .service-content .btn {
-        width: 100%; /* Full width on mobile */
+        width: 100%;
+        max-width: none;
     }
 }
         
@@ -864,47 +874,41 @@
             </div>
 
             <div class="services-grid">
-                <!-- Service 1 - Uniforms -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="images\Uniform.jpg" alt="Uniforms">
-                    </div>
-                    <div class="service-content">
-                        <h3 data-en="Custom Uniforms" data-ar="الزي الرسمي الموحد">Custom Uniforms</h3>
-                        <p data-en="We supply official uniforms with printing and embroidery, alongside workwear and promotional gifts across diverse sectors including medical and healthcare, hospitality, industrial, education, service, printing, and many other fields." data-ar="نوفر الزي الرسمي الرسمي مع الطباعة والتطريز، بالإضافة إلى ملابس العمل والهدايا الترويجية في العديد من القطاعات المتنوعة مثل الطبية والصحية، الضيافة، الصناعة، التعليم، الخدمات، الطباعة، والعديد من المجالات الأخرى.">We supply official uniforms with printing and embroidery, alongside workwear and promotional gifts across diverse sectors including medical and healthcare, hospitality, industrial, education, service, printing, and many other fields.</p>
-                        
-                        <!-- Link to Uniforms Gallery Page -->
-                        <a href="uniforms-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
-                    </div>
-                </div>
+              <!-- Service 1 - Uniforms -->
+<div class="service-card">
+    <div class="service-img">
+        <img src="images/Uniform.jpg" alt="Uniforms">
+    </div>
+    <div class="service-content">
+        <h3 data-en="Custom Uniforms" data-ar="الزي الرسمي الموحد">Custom Uniforms</h3>
+        <p data-en="We supply official uniforms..." data-ar="نوفر الزي الرسمي الرسمي...">We supply official uniforms...</p>
+        <a href="uniforms-gallery.html" class="btn" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
+    </div>
+</div>
 
-                <!-- Service 2 - Linens -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="images\Linen.jpg" alt="Bed Linens">
-                    </div>
-                    <div class="service-content">
-                        <h3 data-en="Medical & Hospitality Textiles" data-ar="منسوجات طبية وفندقية">Medical & Hospitality Textiles</h3>
-                        <p data-en="High-quality Medical & Hospitality Textiles for hotels, hospitals, and healthcare facilities. We offer durable, comfortable, and hygienic solutions customized to meet your specific requirements." data-ar="منسوجات طبية وفندقية عالية الجودة للفنادق والمستشفيات والمرافق الصحية. نقدم حلولاً متينة ومريحة وصحية مصممة خصيصًا لتلبية احتياجاتكم.">High-quality Medical & Hospitality Textiles for hotels, hospitals, and healthcare facilities. We offer durable, comfortable, and hygienic solutions customized to meet your specific requirements.</p>
-                        
-                        <!-- Link to Linens Gallery Page -->
-                        <a href="linens-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
-                    </div>
-                </div>
+<!-- Service 2 - Linens -->
+<div class="service-card">
+    <div class="service-img">
+        <img src="images/Linen.jpg" alt="Medical & Hospitality Textiles">
+    </div>
+    <div class="service-content">
+        <h3 data-en="Medical & Hospitality Textiles" data-ar="منسوجات طبية وفندقية">Medical & Hospitality Textiles</h3>
+        <p data-en="High-quality Medical & Hospitality Textiles..." data-ar="منسوجات طبية وفندقية عالية الجودة...">High-quality Medical & Hospitality Textiles...</p>
+        <a href="linens-gallery.html" class="btn" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
+    </div>
+</div>
 
-                <!-- Service 3 - Accessories -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="images\Business accessories.jpg" alt="Business Accessories">
-                    </div>
-                    <div class="service-content">
-                        <h3 data-en="Business Accessories" data-ar="الاكسسوارات التجارية">Business Accessories</h3>
-                        <p data-en="Professional business cards and promotional gifts designed to complement your corporate identity and enhance your brand presence in the marketplace." data-ar="بطاقات عمل احترافية وهدايا ترويجية مصممة لتكملة هويتك المؤسسية وتعزيز حضور علامتك التجارية في السوق.">Professional business cards and promotional gifts designed to complement your corporate identity and enhance your brand presence in the marketplace.</p>
-                        
-                        <!-- Link to Accessories Gallery Page -->
-                        <a href="accessories-gallery.html" class="btn" style="margin-top: 20px;" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
-                    </div>
-                </div>
+<!-- Service 3 - Accessories -->
+<div class="service-card">
+    <div class="service-img">
+        <img src="images/Business accessories.jpg" alt="Business Accessories">
+    </div>
+    <div class="service-content">
+        <h3 data-en="Business Accessories" data-ar="الاكسسوارات التجارية">Business Accessories</h3>
+        <p data-en="Professional business cards..." data-ar="بطاقات عمل احترافية...">Professional business cards...</p>
+        <a href="accessories-gallery.html" class="btn" data-en="View Gallery" data-ar="عرض المعرض">View Gallery</a>
+    </div>
+</div>                </div>
             </div>
         </div>
     </section>
